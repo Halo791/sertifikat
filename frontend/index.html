@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MyNFT DApp</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>🚀 Mint NFT DApp</h2>
+
+  <div>
+    <label>Recipient Address:</label><br>
+    <input type="text" id="recipient" placeholder="0x..."><br><br>
+
+    <label>Token URI (IPFS URL):</label><br>
+    <input type="text" id="tokenURI" placeholder="ipfs://..."><br><br>
+
+    <button onclick="mintNFT()">Mint NFT</button>
+  </div>
+
+  <p id="status"></p>
+
+  <!-- Tambah web3.js -->
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
