@@ -579,9 +579,9 @@ window.addEventListener('load', async () => {
     await window.ethereum.request({ method: 'eth_requestAccounts' });
 
     contract = new web3.eth.Contract(abi, contractAddress);
-    document.getElementById("status").innerText = "✅ Connected to Remix VM";
+    document.getElementById("status").innerText = "✅ Wallet Connected!";
   } else {
-    document.getElementById("status").innerText = "❌ Web3 not found";
+    document.getElementById("status").innerText = "❌ Please install MetaMask.";
   }
 });
 
@@ -591,9 +591,12 @@ async function mintNFT() {
     const recipient = document.getElementById("recipient").value;
     const tokenURI = document.getElementById("tokenURI").value;
 
+    document.getElementById("status").innerText = "⏳ Minting in progress...";
+
     const tx = await contract.methods.mintNFT(recipient, tokenURI).send({ from: accounts[0] });
-    document.getElementById("status").innerText =
-      "🎉 NFT Minted! TX: " + tx.transactionHash;
+
+    document.getElementById("status").innerHTML =
+      `🎉 NFT Minted! <br> TX Hash: <a href="https://sepolia.etherscan.io/tx/${tx.transactionHash}" target="_blank">${tx.transactionHash}</a>`;
   } catch (error) {
     document.getElementById("status").innerText = "❌ Error: " + error.message;
   }
